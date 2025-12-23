@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>KeyAuth Simples</title>
+</head>
+<body>
+    <h1>Meu sistema de Key</h1>
+
+    <button onclick="criarKey()">Criar Key</button>
+    <p id="key"></p>
+
+    <input id="keyInput" placeholder="Digite a key">
+    <button onclick="validar()">Validar</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        async function criarKey() {
+            const res = await fetch("/create-key");
+            const key = await res.text();
+            document.getElementById("key").innerText = "Key criada: " + key;
+            document.getElementById("resultado").innerText = "";
+        }
+
+        async function validar() {
+            const key = document.getElementById("keyInput").value;
+
+            const res = await fetch("/validar-key", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ key })
+            });
+
+            const data = await res.json();
+            document.getElementById("resultado").innerText = data.msg;
+        }
+    </script>
+</body>
+</html>

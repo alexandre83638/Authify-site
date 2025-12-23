@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Authify | Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+
+.cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(
+        circle,
+        rgba(255, 59, 59, 0.45) 0%,
+        rgba(255, 59, 59, 0.25) 35%,
+        rgba(255, 59, 59, 0.1) 55%,
+        rgba(255, 59, 59, 0.0) 70%
+    );
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+}
+
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #050505;
+            color: #fff;
+        }
+
+        /* ===== TOPO ===== */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 60px;
+            border-bottom: 1px solid #111;
+        }
+
+        .logo-top {
+            font-size: 24px; /* um pouco maior */
+            font-weight: 800;
+            color: #ff3b3b;
+        }
+
+        nav {
+            display: flex;
+            gap: 35px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .top-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .api-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #7dff7d;
+            background: #0d1a0d;
+            padding: 6px 12px;
+            border-radius: 999px;
+        }
+
+        .api-status span {
+            width: 7px;
+            height: 7px;
+            background: #2bff2b;
+            border-radius: 50%;
+        }
+
+        .client-area {
+            color: #fff;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            height: calc(100vh - 90px);
+            display: flex;
+            justify-content: center;
+            padding-top: 60px; /* sobe tudo */
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        /* BOTÃO GOOGLE MAIS NO TOPO */
+        .google-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 22px;
+            background: linear-gradient(135deg, #ff3b3b, #b30000);
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 25px;
+        }
+
+        .title {
+            font-size: 88px; /* BEM GRANDE */
+            font-weight: 900;
+            margin: 0;
+            background: linear-gradient(180deg, #ff6b6b, #b30000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle-main {
+            font-size: 26px;
+            font-weight: 600;
+            margin-top: 8px; /* grudado */
+            margin-bottom: 25px;
+            color: #ddd;
+        }
+
+        .description {
+            font-size: 15px;
+            color: #aaa;
+            line-height: 1.7;
+            max-width: 720px;
+            margin: 0 auto 45px;
+        }
+
+        /* ===== BOTÕES ===== */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .btn-white {
+            padding: 14px 26px;
+            background: #fff;
+            color: #000;
+            border-radius: 10px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-dark {
+            padding: 14px 26px;
+            background: transparent;
+            color: #fff;
+            border-radius: 10px;
+            font-weight: 600;
+            border: 1px solid #333;
+            cursor: pointer;
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                display: none;
+            }
+
+            .title {
+                font-size: 56px;
+            }
+        }
+
+        header,
+.hero,
+section,
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="cursor-glow"></div>
+
+
+<header>
+    <div class="logo-top">Authify</div>
+
+    <nav>
+        <a href="#">Início</a>
+        <a href="#">Recursos</a>
+        <a href="#">Documentação</a>
+        <a href="#">Planos</a>
+    </nav>
+
+    <div class="top-right">
+        <div class="api-status">
+            <span></span> API Online
+        </div>
+        <a href="#" class="client-area">Área do Cliente</a>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+
+        <div class="google-top" onclick="loginGoogle()">
+            <i class="fa-brands fa-google"></i>
+            Entrar com Google
+        </div>
+
+        <h1 class="title">Authify</h1>
+
+        <div class="subtitle-main">
+            A plataforma completa para autenticação de próximo nível.
+        </div>
+
+        <div class="description">
+            Construa, implante e escale sistemas de autenticação seguros com controles de
+            acesso granulares, webhooks do lado do servidor e fluxos de trabalho
+            automatizados — tudo impulsionado por uma única API poderosa.
+        </div>
+
+        <div class="buttons">
+            <button class="btn-white">Área do Cliente</button>
+            <button class="btn-dark">Explorar Recursos</button>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    function loginGoogle() {
+        window.location.href = "/auth/google";
+    }
+</script>
+
+<script>
+    const glow = document.querySelector('.cursor-glow');
+
+    document.addEventListener('mousemove', (e) => {
+        glow.style.left = e.clientX + 'px';
+        glow.style.top  = e.clientY + 'px';
+    });
+</script>
+
+
+</body>
+</html>
