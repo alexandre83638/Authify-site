@@ -1,10 +1,12 @@
 console.log("INICIANDO SERVER...");
-
+    
+const path = require('path');
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static("public"));
 app.use(express.json());
 
@@ -194,6 +196,7 @@ app.post("/reset-key/:id", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log("Servidor rodando na porta", PORT);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log('Servidor rodando na porta', PORT);
 });
+
