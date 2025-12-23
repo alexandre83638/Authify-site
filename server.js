@@ -23,7 +23,7 @@ app.use(session({
 passport.use(new GoogleStrategy({
    clientID: process.env.GOOGLE_CLIENT_ID,
 clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/callback"
+    callbackURL: "https://authify-site-production-282b.up.railway.app/auth/google/callback"
 }, async (accessToken, refreshToken, profile, done) => {
     let user = await User.findOne({ googleId: profile.id });
     if (!user) {
@@ -45,6 +45,9 @@ passport.deserializeUser(async (id, done) => {
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "admin.html"));
+});
 
 
 // 🔗 CONEXÃO COM O MONGODB (COLE SUA STRING AQUI)
@@ -196,7 +199,8 @@ app.post("/reset-key/:id", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log('Servidor rodando na porta', PORT);
+app.listen(PORT, () => {
+  console.log("Servidor rodando na porta", PORT);
 });
+
 
